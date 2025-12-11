@@ -7,6 +7,7 @@ from typing import Dict, List, Optional
 from uuid import UUID
 
 from fastapi import FastAPI, HTTPException, Query, Path
+from utils.db import get_connection
 
 from models.walk import WalkCreate, WalkRead, WalkUpdate
 from models.assignment import AssignmentCreate, AssignmentRead, AssignmentUpdate
@@ -26,6 +27,15 @@ app = FastAPI(
     description="Microservice for managing dog-walk requests, assignments, and event logs.",
     version="0.2.0",
 )
+
+@app.get("/test-db")
+def test_db():
+    conn = get_connection()
+    with conn.cursor() as cursor:
+        cursor.execute("SELECT NOW() AS server_time;")
+        result = cursor.fetchone()
+    conn.close()
+    return {"cloud_sql_time": result["server_time"]}
 
 # -----------------------------------------------------------------------------
 # Walk Endpoints
