@@ -36,19 +36,24 @@ The **Walk Service** is a standalone FastAPI microservice that models a simple d
 ## 🐍 Running Locally
 
 ### 1. Create a virtual environment
-```
+```bash
 python3 -m venv venv
 source venv/bin/activate
 ```
 
 ### 2. Install dependencies
-```
+```bash
 pip install -r requirements.txt
 ```
 
 ### 3. Start the service
+```bash
+uvicorn main:app --reload
 ```
-uvicorn main:app --reload --port 8000
+
+The service will run at:
+```
+http://localhost:8000
 ```
 
 ### 4. API Docs
@@ -56,6 +61,10 @@ Open:
 ```
 http://localhost:8000/docs
 ```
+
+> **Note (Local Development):**  
+> When running locally, Google Cloud services such as Pub/Sub are automatically disabled unless valid Application Default Credentials and environment variables are provided.  
+> Events will be logged locally instead of being published to Pub/Sub.
 
 ---
 
