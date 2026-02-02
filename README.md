@@ -1,6 +1,18 @@
 # Walk Service – Cloud Run Microservice
 
-The **Walk Service** is a standalone FastAPI microservice that models a simple dog-walking backend, providing RESTful endpoints for managing walk requests, walker assignments, and event logs. Designed as a lightweight cloud-native service, it runs inside a Docker container and is deployed on **Google Cloud Run**, which automatically scales the service without requiring manual server management. While the core CRUD logic uses in-memory storage for simplicity, the service also demonstrates real cloud integration by connecting to a **Google Cloud SQL (MySQL)** database through a secure Cloud SQL connector, enabling real-time database queries and supporting production-ready infrastructure.
+The **Walk Service** is the backend API for a **dog-walking application**, responsible for managing the full lifecycle of dog walks. In practical terms, this service is what a mobile app or web frontend would call when a dog owner requests a walk, when a walker accepts that request, and when the walk’s status changes over time.
+
+**This microservice was developed as a project for a Cloud Computing course**, with the goal of practicing cloud-native backend design, containerization, managed deployment, and event-driven architectures on Google Cloud Platform.
+
+Concretely, the service allows clients to:
+- Create a new walk request with specific details such as owner ID, pet ID, city/location, scheduled time, and walk duration
+- Assign a walker to an existing walk request
+- Update and query the current status of a walk (for example: requested, assigned, completed)
+- Retrieve stored walk information for display in user-facing applications
+
+Each of these actions is exposed as a **RESTful endpoint** implemented using **FastAPI**.
+
+The service is packaged as a Docker container and deployed on **Google Cloud Run**, allowing it to scale automatically without manual server management. For simplicity, the core CRUD logic uses in-memory storage, while a dedicated endpoint demonstrates real cloud integration by connecting to a **Google Cloud SQL (MySQL)** database through a secure Cloud SQL connector. In addition, the service publishes structured events (such as when a walk is created) to **Google Cloud Pub/Sub**, enabling other services—like notifications, analytics, or logging—to react asynchronously in an event-driven architecture.
 
 ---
 
