@@ -28,7 +28,7 @@ The service is packaged as a Docker container and deployed on **Google Cloud Run
 
 ## 🎥 Demo Video
 
-[![Walk Service Demo](walk_service_demo.mp4)](https://github.com/lorraine-xu/Walk-Service/issues/1#issue-3903927767)
+[Watch the demo on YouTube](https://youtu.be/EKRNJkGr39c)
 
 ---
 
