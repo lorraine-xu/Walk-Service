@@ -28,7 +28,7 @@ The service is packaged as a Docker container and deployed on **Google Cloud Run
 
 ## 🎥 Demo Video
 
-![Walk Service Demo](Cloud Computing HW1.mp4)
+![Walk Service Demo](walk_service_demo.mp4)
 
 ---
 
